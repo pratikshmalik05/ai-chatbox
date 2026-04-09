@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot Assistant</title>
+    <meta name="description" content="A powerful frontend AI Chatbot integrating OpenRouter Text and HuggingFace Image Generation models.">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for standard vector icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Persistent Header Area -->
+        <header class="chat-header">
+            <div class="header-info">
+                <i class="fa-solid fa-robot bot-icon"></i>
+                <div>
+                    <h2>AI Assistant</h2>
+                    <p class="status">Online</p>
+                </div>
+            </div>
+            
+            <div class="header-controls">
+                <!-- Mode Toggle Button (Text / Image) -->
+                <button id="toggle-mode-btn" class="icon-btn text-mode" title="Toggle Text/Image Mode">
+                    <i class="fa-solid fa-message" id="mode-icon"></i>
+                    <span id="mode-text">Text Mode</span>
+                </button>
+                
+                <!-- Clear Chat UI Button -->
+                <button id="clear-chat-btn" class="icon-btn" title="Clear Chat History">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Scrolling Chat History Viewport -->
+        <main class="chat-history" id="chat-box">
+            <!-- Initial Greeting Bot Message -->
+            <div class="message bot-message">
+                <div class="message-content">Hello! How can I help you today? You can ask me textual questions, or toggle Image Mode at the top to generate standard images!</div>
+                <div class="message-timestamp" id="init-time">Just now</div>
+            </div>
+        </main>
+
+        <!-- Dynamic Typing Indicator (Hidden by default) -->
+        <div class="typing-indicator hidden" id="typing-indicator">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <!-- Chat Input Footer -->
+        <footer class="chat-input-area">
+            <form id="chat-form">
+                <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
+                <button type="submit" id="send-btn" disabled aria-label="Send Message">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </footer>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+    <script>
+        // Set the initial greeting timestamp appropriately 
+        document.getElementById('init-time').textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    </script>
+</body>
+</html>
